@@ -1,17 +1,17 @@
 import Sequelize from "sequelize";
 import db from '../config/db.js';
 
-export const Movimientos = db.define('movimientos', {
-    concepto: {
+export const Movement = db.define('movements', {
+    concept: {
         type: Sequelize.STRING
     },
-    monto: {
+    amount: {
         type: Sequelize.BIGINT
     },
-    fecha: {
+    date: {
         type: Sequelize.DATE
     },
-    tipo: {
+    type: {
         type: Sequelize.STRING
     }
 });

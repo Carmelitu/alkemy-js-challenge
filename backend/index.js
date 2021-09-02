@@ -12,6 +12,10 @@ db.authenticate()
 // Define port
 const port = process.env.PORT || 4000;
 
+// Body Parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Add router
 app.use('/', router);
 
