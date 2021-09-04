@@ -1,8 +1,12 @@
 import express from 'express';
 import router from './routes/index.js';
 import db from './config/db.js';
+import cors from 'cors';
 
 const app = express();
+
+// Enable CORS
+app.use(cors());
 
 // Connect to DB
 db.authenticate()
