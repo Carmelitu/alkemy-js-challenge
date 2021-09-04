@@ -7,10 +7,10 @@ const Table = ({movements, setConsult}) => {
         return null;
     }
 
-    // Elimina un registro
+    // Deletes a movement
     const removeMovement = id => {
         axiosClient.delete(`/movements/${id}`)
-            .then(respuesta => {
+            .then(res => {
                 setConsult(true);
             })
             .catch(error => console.log(error));        

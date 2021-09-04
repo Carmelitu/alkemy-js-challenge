@@ -44,7 +44,7 @@ function App() {
       
       <Route
         exact path="/new"
-        component={() => <Form />}
+        component={() => <Form setConsult={setConsult} />}
       />
 
       <Route

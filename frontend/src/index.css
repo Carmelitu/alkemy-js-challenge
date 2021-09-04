@@ -59,3 +59,10 @@ a {
 .btn{
   cursor: pointer;
 }
+
+.error {
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  background-color: red;
+}
