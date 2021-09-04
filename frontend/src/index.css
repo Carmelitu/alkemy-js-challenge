@@ -12,10 +12,12 @@ h1 {
   text-align: center;
   padding-top: 1em;
   padding-bottom: 0.5em;
+  font-weight: bold;
 }
 
 h3 {
   text-align: center;
+  font-weight: bold;
 }
 
 h4 {
@@ -30,6 +32,10 @@ label{
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  color: white;
 }
 
 ::placeholder{
@@ -50,14 +56,6 @@ code {
   margin-right: 20%;
 }
 
-.edit-button {
-  background-color: grey;
-  color: black;
-  margin: auto;
-}
-
-.delete-button {
-  background-color: red;
-  color: white;
-  margin: auto;
+.btn{
+  cursor: pointer;
 }

@@ -11,19 +11,22 @@ function App() {
 
   // App State
   const [movements, setMovements] = useState([]);
+  const [consult, setConsult] = useState(true);
 
   useEffect(() => {
-    const consultAPI = () => {
-      axiosClient.get('/movements')
-        .then(res => {
-          setMovements(res.data);
-        })
-        .catch(error => console.log(error))
+    if (consult){
+      const consultAPI = () => {
+        axiosClient.get('/movements')
+          .then(res => {
+            setMovements(res.data);
+            setConsult(false);
+          })
+          .catch(error => console.log(error))
+      }
+  
+      consultAPI();
     }
-
-    consultAPI();
-    
-  }, []);
+  }, [consult]);
 
   return (
     <Router>
@@ -32,7 +35,10 @@ function App() {
         exact path="/"
         component={ () => <Fragment>
           <Main />
-          <Table movements={movements} />
+          <Table
+            movements={movements}
+            setConsult={setConsult}
+          />
         </Fragment>}
       />
       
