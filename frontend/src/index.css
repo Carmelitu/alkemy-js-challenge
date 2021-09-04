@@ -10,7 +10,8 @@ body {
 
 h1 {
   text-align: center;
-  padding: 1em;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
 }
 
 h3 {
@@ -33,4 +34,30 @@ code {
 
 ::placeholder{
   font-style: italic;
+}
+
+.add-movement {
+  display: flex;
+  justify-content: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 5%;
+}
+
+.form{
+  justify-content: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.edit-button {
+  background-color: grey;
+  color: black;
+  margin: auto;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  margin: auto;
 }

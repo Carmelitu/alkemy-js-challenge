@@ -5,17 +5,34 @@ import axiosClient from './config/axios';
 // Comps
 import Form from './components/Form';
 import Table from './components/Table';
-import Title from './components/Title';
+import Main from './components/Main';
 
 function App() {
+
+  // App State
+  const [movements, setMovements] = useState([]);
+
+  useEffect(() => {
+    const consultAPI = () => {
+      axiosClient.get('/movements')
+        .then(res => {
+          setMovements(res.data);
+        })
+        .catch(error => console.log(error))
+    }
+
+    consultAPI();
+    
+  }, []);
+
   return (
     <Router>
     <Switch>
       <Route
         exact path="/"
         component={ () => <Fragment>
-          <Title/>
-          <Table />
+          <Main />
+          <Table movements={movements} />
         </Fragment>}
       />
       
