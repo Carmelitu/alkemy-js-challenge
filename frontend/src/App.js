@@ -6,6 +6,7 @@ import axiosClient from './config/axios';
 import Form from './components/Form';
 import Table from './components/Table';
 import Main from './components/Main';
+import EditForm from './components/EditForm';
 
 function App() {
 
@@ -50,16 +51,15 @@ function App() {
       <Route
         exact path="/movement/:id"
 
-        /*render={(props) => {
-          const cita = citas.filter(cita => cita._id === props.match.params.id)
-          console.log(cita);
+        render={(props) => {
+          const movement = movements.filter(movement => movement.id === Number(props.match.params.id));
 
           return (
-          <Cita 
-            cita={cita[0]}
-            guardarConsulta={guardarConsulta}
+          <EditForm 
+            mov={movement[0]}
+            setConsult={setConsult}
           />)
-        }}*/
+        }}
       />
     </Switch>
   </Router>

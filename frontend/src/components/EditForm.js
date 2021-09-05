@@ -4,14 +4,10 @@ import axiosClient from '../config/axios';
 import Back from './Back';
 import Error from './Error';
 
-const Form = ({setConsult, history}) => {
+const EditForm = ({setConsult, history, mov}) => {
+
     // Create state as an object
-    const [movement, setMovement] = useState({
-        concept: '',
-        amount: '',
-        date: '',
-        type: ''
-    })
+    const [movement, setMovement] = useState(mov);
 
     // Verify error
     const [error, setError] = useState(false);
@@ -25,7 +21,7 @@ const Form = ({setConsult, history}) => {
     }
 
     // Send req to API
-    const createMovement = e => {
+    const editMovement = e => {
         e.preventDefault();
 
         if(movement.concept === '' || movement.amount === '' || movement.date === '' || movement.type === ''){
@@ -33,7 +29,7 @@ const Form = ({setConsult, history}) => {
             return;
         } else {
             setError(false);
-            axiosClient.post('/movements', movement)
+            axiosClient.put(`/movements/${movement.id}`, movement)
             .then(res => {
                 setConsult(true);
 
@@ -47,15 +43,16 @@ const Form = ({setConsult, history}) => {
     return (
         <div className="container">
             <div className="form">
-                <h4>Enter new movement</h4>
+                <h4>Edit movement</h4>
                 <Back />
-                <form onSubmit={createMovement}>
+                <form onSubmit={editMovement}>
                     <div className="row">
                         <div className="u-full-width">
                             <label htmlFor="concept-form">Concept</label>
                             <input className="u-full-width" type="text" placeholder="Shopping" id="concept-form"
                                 onChange={refreshState}
                                 name="concept"
+                                value={movement.concept}
                             />
                         </div>
                     </div>
@@ -64,15 +61,14 @@ const Form = ({setConsult, history}) => {
                             <input className="u-full-width" type="date" id="date-form"
                                 onChange={refreshState}
                                 name="date"
+                                value={movement.date}
                             />
                         </div>
                     <div className="row">
                         <div className="one-half column">
                             <label htmlFor="type-form">Type</label>
-                            <select className="u-full-width" id="type-form" onChange={refreshState} name="type">
-                                <option value="">- Select an option -</option>
-                                <option value="income">Income</option>
-                                <option value="expenditure">Expenditure</option>
+                            <select className="u-full-width" id="type-form" onChange={refreshState} name="type" disabled>
+                                <option value="">{movement.type}</option>
                             </select>
                         </div>
                         <div className="one-half column">
@@ -80,6 +76,7 @@ const Form = ({setConsult, history}) => {
                             <input className="u-full-width" type="number" placeholder="500" id="amount-form"
                                 onChange={refreshState}
                                 name="amount"
+                                value={movement.amount}
                             />
                         </div>
                     </div>
@@ -91,4 +88,4 @@ const Form = ({setConsult, history}) => {
     );
 }
  
-export default withRouter(Form);
+export default withRouter(EditForm);

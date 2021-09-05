@@ -23,15 +23,11 @@ h3 {
 h4 {
   text-align: center;
   padding: 1em;
+  margin-bottom: 0;
 }
 
 label{
   font-weight: normal;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 a {
